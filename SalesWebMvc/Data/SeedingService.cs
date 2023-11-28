@@ -10,18 +10,19 @@ namespace SalesWebMvc.Data
     public class SeedingService
     {
         private SalesWebMvcContext _context;
-        public  SeedingService(SalesWebMvcContext context)
+
+        public SeedingService(SalesWebMvcContext context)
         {
             _context = context;
         }
 
         public void Seed()
         {
-            if( _context.Department.Any() ||
-                _context.SalesRecords.Any() ||
-                _context.Seller.Any() )
+            if (_context.Department.Any() ||
+                _context.Seller.Any() ||
+                _context.SalesRecord.Any())
             {
-                return; //DB has been populated
+                return; // DB has been seeded
             }
 
             Department d1 = new Department(1, "Computers");
@@ -77,9 +78,7 @@ namespace SalesWebMvc.Data
                 r21, r22, r23, r24, r25, r26, r27, r28, r29, r30
             );
 
-
             _context.SaveChanges();
         }
     }
-
 }
